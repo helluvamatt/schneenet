@@ -55,5 +55,5 @@ local.properties
 
 # Application specific
 /data/
-/app/logs/
+/app/logs/*.log
 /app/config.json
