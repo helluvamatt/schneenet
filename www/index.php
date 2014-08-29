@@ -82,7 +82,7 @@ if (count($apps) > 0)
 		{
 			$mediaItem = "col-md-9 col-sm-6 col-xs-12";
 ?>
-							<a class="col-md-3 col-sm-6 col-xs-12" href="<?php echo $app['url']; ?>">
+							<a class="col-md-3 col-sm-6 col-xs-12" style="margin-bottom: 8px;" href="<?php echo $app['url']; ?>">
 								<img class="img-thumbnail img-responsive" src="<?php echo $app['icon']; ?>" alt="icon">
 							</a>
 <?php 
