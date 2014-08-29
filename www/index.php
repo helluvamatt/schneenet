@@ -60,28 +60,35 @@
 				</div>
 				<div class="panel-body">
 <?php
-$apps_json = file_get_contents('../data/apps/apps.json');
-$apps = json_decode($apps_json, TRUE);
+$filename = '../data/apps/apps.json';
+$apps = array();
+if (file_exists($filename))
+{
+	$apps_json = file_get_contents($filename);
+	$apps = json_decode($apps_json, TRUE);
+}
 if (count($apps) > 0)
 {
 ?>
-					<ul class="media-list">
+					<!-- ul class="media-list" -->
 <?php
 	foreach ($apps as $app)
 	{
 ?>
-						<li class="media">
+						<div class="row">
 <?php 
+		$mediaItem = "col-xs-12";
 		if (array_key_exists('icon', $app))
 		{
+			$mediaItem = "col-md-9 col-sm-6 col-xs-12";
 ?>
-							<a class="pull-left" href="<?php echo $app['url']; ?>">
-								<img class="media-object" src="<?php echo $app['icon']; ?>" alt="icon">
+							<a class="col-md-3 col-sm-6 col-xs-12" href="<?php echo $app['url']; ?>">
+								<img class="img-thumbnail img-responsive" src="<?php echo $app['icon']; ?>" alt="icon">
 							</a>
 <?php 
 		}
 ?>
-							<div class="media-body">
+							<div class="<?php echo $mediaItem; ?>">
 								<h4 class="media-heading"><a href="<?php echo $app['url']; ?>"><?php echo $app['title']; ?></a></h4>
 								<p><?php echo $app['description']; ?></p>
 <?php 
@@ -121,11 +128,11 @@ if (array_key_exists('tags', $app) && is_array($app['tags']))
 }
 ?>
 							</div>
-						</li>
+						</div>
 <?php
 	}
 ?>
-					</ul>
+					<!-- /ul -->
 <?php
 }
 else
